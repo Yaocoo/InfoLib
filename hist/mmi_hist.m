@@ -1,7 +1,8 @@
 function [ I ] = mmi_hist( X, Y, Z )
 %MMI_HIST Calculate multivariate mutual information
 %   Description: calculate multivariate mutual information among variables
-%   X, Y and Z.
+%   X, Y and Z. The positive result value means redundancy and negtive value
+%   means synergy.
 %
 %   Usage: I = mmi_hist( X, Y, Z )
 %   Input:

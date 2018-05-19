@@ -63,17 +63,15 @@ toc
 fprintf('Finished!\n');
 
 %%
-%
-tic
-I1 = mi_lcw_hist(X,1,Z,2);
-toc
-
 % faster
 tic
 I2 = mi_lcw_fh(X,Z,Ntrl);
 toc
 
-I2(1,2);
+%
+tic
+I1 = mi_lcw_hist(X,1,Z,2);
+toc
 
 fprintf('Finished!\n');
 

@@ -1,7 +1,7 @@
 function [ i ] = mi_lc_hist( X, x, Y, y )
 %MI_LC_HIST calculate local mutual information
-%   Description: calculate local mutual information between event x of 
-%   variable X and event y of Variable Y.
+%   Description: calculate local mutual information (also called point-wise
+%   mutual information) between event x of variable X and event y of Variable Y.
 %
 %   Usage: i = mi_lc_hist( X, x, Y, y )
 %   Input:
@@ -35,7 +35,7 @@ end
 % calculate the local mutual information
 xInd = subArr2ind(size(pX),x);
 yInd = subArr2ind(size(pY),y);
-i = entropy_lc_hist(pX(xInd)) + entropy_lc_hist(pY(yInd)) - entropy_lc_hist(pXY(xyInd));
+i = log2(pXY(xyInd)) - log2(pX(xInd)) - log2(pY(yInd)); % h(x) + h(y) - h([x y])
 
 end
 
