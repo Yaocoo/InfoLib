@@ -1,21 +1,22 @@
 function [ i ] = mi_lcw_hist( X, x, Y, y )
-%MI_LCW_HIST Calculate weighted local mutual information
-%   Description: calculate local mutual information (also called point-wise 
-%   mutual information) weighted by p(x,y) between event x of variable X 
-%   and event y of Variable Y.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description: calculate local mutual information (also called point-wise 
+% mutual information) weighted by p(x,y) between event x of variable X and 
+% event y of Variable Y.
 %
-%   Usage: i = mi_lcw_hist( X, x, Y, y )
-%   Input:
-%       X - A vector or matrix. Each column as an independent variable.
-%       x - one event of X.
-%       Y - A vector or matrix. Each column as an independent variable.
-%       y - one event of Y.
-%   Output:
-%       i - local mutual information
+% Usage: i = mi_lcw_hist( X, x, Y, y )
+% Input:
+%   X - A vector or matrix. Each column as an independent variable.
+%   x - one event of X.
+%   Y - A vector or matrix. Each column as an independent variable.
+%   y - one event of Y.
+% Output:
+%   i - local mutual information
 %
-%   Date: 2018/05/17
-%   Revision: 2018/05/17
-%   Author: Yaocong Duan (yaocong.duan@gmail.com)
+% Date: 2018/05/17
+% Revision: 2018/05/17
+% Author: Yaocong Duan (yaocong.duan@gmail.com)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % estimate the probability
 pXY = pEstimater_hist([X Y]);

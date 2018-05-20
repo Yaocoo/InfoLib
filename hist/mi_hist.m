@@ -1,17 +1,18 @@
 function [ I ] = mi_hist( X, Y )
-%MI_HIST calculate mutual information
-%   Description: calculate mutual information between variables X and Y.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description: calculate mutual information between variables X and Y.
 %
-%   Usage: I = mi_hist( X, Y )
-%   Input:
-%       X - A vector or matrix. Each column as an independent variable.
-%       Y - A vector or matrix. Each column as an independent variable.
-%   Output:
-%       I - Mutual information between variables X and Y.
+% Usage: I = mi_hist( X, Y )
+% Input:
+%   X - A vector or matrix. Each column as an independent variable.
+%   Y - A vector or matrix. Each column as an independent variable.
+% Output:
+%   I - Mutual information between variables X and Y.
 %
-%   Date: 2018/05/17
-%   Revision: 2018/05/17
-%   Author: Yaocong Duan (yaocong.duan@gmail.com)
+% Date: 2018/05/17
+% Revision: 2018/05/17
+% Author: Yaocong Duan (yaocong.duan@gmail.com)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % dimX = size(X); % two dimentions
 % dimY = size(Y); % two dimentions
