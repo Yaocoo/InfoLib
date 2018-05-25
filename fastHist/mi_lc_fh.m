@@ -5,8 +5,8 @@ function [ i ] = mi_lc_fh( pX, pY, pXY )
 %
 % Usage: i = mi_lc_fh( pX, pY, pXY )
 % Input:
-%   pX - Probability distribution of X.
-%   pY - Probability distribution of X.
+%   pX - Column vector. Probability distribution of a univariate X.
+%   pY - Row vector. Probability distribution of a univariate Y.
 %   pXY - Probability distribution of joint variable [X Y].
 % Output:
 %   i - local mutual information
@@ -17,7 +17,7 @@ function [ i ] = mi_lc_fh( pX, pY, pXY )
 %   pY = sum(pXY,1);
 %   % another way for getting pX and pY
 %   % pX = pEstimater_fh(X,Ntrl);
-%   % pY = pEstimater_fh(Y,Ntrl);
+%   % pY = pEstimater_fh(Y,Ntrl)';
 %
 %   I = mi_lc_fh(pX, pY, pXY);
 %   % example: take pmi(X=1;Y=2)

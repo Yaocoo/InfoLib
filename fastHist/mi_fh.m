@@ -4,8 +4,8 @@ function [ I ] = mi_fh( pX, pY, pXY )
 %
 % Usage: I = mi_fh( pX, pY, pXY )
 % Input:
-%   pX - Probability distribution of X.
-%   pY - Probability distribution of X.
+%   pX - Column vector. Probability distribution of a univariate X.
+%   pY - Row vector. Probability distribution of a univariate Y.
 %   pXY - Probability distribution of joint variable [X Y].
 % Output:
 %   I - Mutual information between variables X and Y.
@@ -16,7 +16,7 @@ function [ I ] = mi_fh( pX, pY, pXY )
 %   pY = sum(pXY,1);
 %   % another way for getting pX and pY
 %   % pX = pEstimater_fh(X,Ntrl);
-%   % pY = pEstimater_fh(Y,Ntrl);
+%   % pY = pEstimater_fh(Y,Ntrl)';
 %
 %   I = mi_lc_fh(pX, pY, pXY);
 %
@@ -25,7 +25,9 @@ function [ I ] = mi_fh( pX, pY, pXY )
 % Author: Yaocong Duan (yaocong.duan@gmail.com)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-I = entropy_hist(pX) + entropy_hist(pY) - entropy_hist(pXY);
+idx = find(pXY>0);
+pXY2 = bsxfun(@times,pX,pY);
+I = sum( pXY(idx) .* log2( pXY(idx) ./ pXY2(idx) ) );
 
 end
 

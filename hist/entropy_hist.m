@@ -13,8 +13,8 @@ function [ E ] = entropy_hist( P )
 % Author: Yaocong Duan (yaocong.duan@gmail.com)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-P(P == 0) = []; % P becomes a vector
-E = -sum(P.*log2(P));
+P(P == 0) = [];
+E = -sum(P(:).*log2(P(:)));
 
 % E = -sum(P(P(:)>0).*log2(P(P(:)>0)));
 
