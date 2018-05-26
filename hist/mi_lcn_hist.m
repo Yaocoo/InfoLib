@@ -1,8 +1,8 @@
 function [ i ] = mi_lcn_hist( X, x, Y, y )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description: calculate local mutual information (also called point-wise 
-% mutual information) normailized by -log2(p(x,y)) between event x of variable X and 
-% event y of Variable Y.
+% mutual information) normailized by -log2(p(x,y)) between event x of variable
+% X and event y of Variable Y.
 %
 % Usage: i = mi_lcn_hist( X, x, Y, y )
 % Input:
@@ -38,7 +38,7 @@ end
 xInd = subArr2ind(size(pX),x);
 yInd = subArr2ind(size(pY),y);
 i = log2(pXY(xyInd)) - log2(pX(xInd)) - log2(pY(yInd)); % h(x) + h(y) - h([x y])
-i = i / -log2(pXY(xyInd));
+i = i ./ -log2(pXY(xyInd));
 
 end
 
