@@ -37,7 +37,7 @@ end
 % calculate the local mutual information
 xInd = subArr2ind(size(pX),x);
 yInd = subArr2ind(size(pY),y);
-i = log2( (pXY(xyInd)*(1-pY(yInd))) / ((pX(xInd)-pXY(xyInd))*pY(yInd)) );
+i = log2(pXY(xyInd)) - log2(pX(xInd)) - log2(pY(yInd)); % h(x) + h(y) - h([x y])
 i = i / -log2(pXY(xyInd));
 
 end
