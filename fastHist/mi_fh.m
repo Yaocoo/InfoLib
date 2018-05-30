@@ -25,7 +25,7 @@ function [ I ] = mi_fh( pX, pY, pXY )
 % Author: Yaocong Duan (yaocong.duan@gmail.com)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-idx = find(pXY>0);
+idx = pXY(:)>0;
 pXY2 = bsxfun(@times,pX,pY);
 I = sum( pXY(idx) .* log2( pXY(idx) ./ pXY2(idx) ) );
 
