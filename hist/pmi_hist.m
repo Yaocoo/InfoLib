@@ -12,6 +12,7 @@ function [ i, I ] = pmi_hist( X, Y, weight_type )
 %   unweighted PMI
 % Output:
 %   i - local mutual information matrix
+%   I - Mutual information between variables X and Y.
 %
 % Date: 2018/05/17
 % Revision: 2018/06/14
