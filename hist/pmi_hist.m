@@ -1,4 +1,4 @@
-function [ i ] = pmi_hist( X, Y, weight_type )
+function [ i, I ] = pmi_hist( X, Y, weight_type )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description: calculate local mutual information (also called point-wise
 % mutual information) matrix between discrete variable X and Y.
@@ -34,6 +34,10 @@ pY = sum(pXY,1);
 
 % i = hx + hy - hxy = log2(pxy/px*py)
 i = log2(pXY ./ bsxfun(@times,pX,pY));
+
+% calculate MI
+idx = pXY(:)>0;
+I = sum(pXY(idx).*i(idx));
 
 % weighting info
 switch weight_type
