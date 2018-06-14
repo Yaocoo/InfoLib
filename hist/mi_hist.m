@@ -28,6 +28,7 @@ pXY = pEstimater_hist([X Y]);
 pX = pEstimater_hist(X);
 pY = pEstimater_hist(Y);
 
+% I = HX + HY - HXY, this way can support uning [X Y] as joint data.
 I = entropy_hist(pX) + entropy_hist(pY) - entropy_hist(pXY);
 
 end

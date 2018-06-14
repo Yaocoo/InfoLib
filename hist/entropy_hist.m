@@ -1,6 +1,7 @@
 function [ E ] = entropy_hist( P )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description: calculate information entropy with probability distribution P.
+% Description: calculate information entropy with a probability 
+% distribution P.
 %
 % Usage: E = entropy_hist( P )
 % Input:
@@ -13,10 +14,10 @@ function [ E ] = entropy_hist( P )
 % Author: Yaocong Duan (yaocong.duan@gmail.com)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-P(P == 0) = [];
-E = -sum(P(:).*log2(P(:)));
-
 % E = -sum(P(P(:)>0).*log2(P(P(:)>0)));
+
+P = P(P(:)>0);
+E = -sum(P.*log2(P));
 
 end
 

@@ -9,6 +9,7 @@ function [ I ] = mi_fh( pX, pY, pXY )
 %   pXY - Probability distribution of joint variable [X Y].
 % Output:
 %   I - Mutual information between variables X and Y.
+%
 % Example:
 %   % estimate the probability
 %   pXY = pEstimater_fh([X Y],Ntrl);
