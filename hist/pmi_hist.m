@@ -33,7 +33,7 @@ pXY = pEstimater_fh([X Y],Ntrl);
 pX = sum(pXY,2);
 pY = sum(pXY,1);
 
-% i = hx + hy - hxy = log2(pxy/px*py)
+% pmi = hx + hy - hxy = log2(pxy/px*py)
 i = log2(pXY ./ bsxfun(@times,pX,pY));
 
 % calculate MI

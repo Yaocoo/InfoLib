@@ -27,7 +27,9 @@ function [ I ] = mi_fh( pX, pY, pXY )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 idx = pXY(:)>0;
-pXY2 = bsxfun(@times,pX,pY);
+pXY2 = pX(:,ones(size(pY))) .* pY(ones(size(pX)),:); % faster than bsxfun
+% pXY2 = bsxfun(@times,pX,pY);
+
 I = sum( pXY(idx) .* log2( pXY(idx) ./ pXY2(idx) ) );
 
 end

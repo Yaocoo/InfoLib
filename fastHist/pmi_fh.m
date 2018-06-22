@@ -38,8 +38,9 @@ if nargin < 4
     weight_type = 'weightd';
 end
 
-% i = hx + hy - hxy = log2(pxy/px*py)
-i = log2(pXY ./ bsxfun(@times,pX,pY));
+% pmi = hx + hy - hxy = log2(pxy/px*py)
+i = log2( pXY ./ (pX(:,ones(size(pY))) .* pY(ones(size(pX)),:)) ); % faster than bsxfun
+% i = log2(pXY ./ bsxfun(@times,pX,pY));
 
 % weighting info
 switch weight_type
