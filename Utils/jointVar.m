@@ -21,7 +21,7 @@ function [ JXY, values ] = jointVar( X, Y )
 xUniq = unique(X)';
 yUniq = unique(Y)';
 JXY = nan(Ntrl,1);
-values = nam(max(xUniq), max(yUniq));
+values = nan(max(xUniq), max(yUniq));
 
 label = 1;
 for xv = xUniq
