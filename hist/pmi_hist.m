@@ -21,7 +21,7 @@ function [ i, I ] = pmi_hist( X, Y, weight_type )
 
 % preprocessing data
 if nargin < 3
-    weight_type = 'weightd';
+    weight_type = 'weighted';
 end
 
 [Ntrl, ~] = size(X);
@@ -42,10 +42,12 @@ I = sum(pXY(idx).*i(idx));
 
 % weighting info
 switch weight_type
-    case 'weightd',
+    case 'weighted',
         i = pXY .* i;
     case 'normalized',
         i = i ./ -log2(pXY);
+    case 'unweighted',
+        
 end
 
 end

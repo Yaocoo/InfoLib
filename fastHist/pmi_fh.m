@@ -35,7 +35,7 @@ function [ i ] = pmi_fh( pXY, pX, pY, weight_type )
 
 % preprocessing data
 if nargin < 4
-    weight_type = 'weightd';
+    weight_type = 'weighted';
 end
 
 % pmi = hx + hy - hxy = log2(pxy/px*py)
@@ -44,10 +44,12 @@ i = log2( pXY ./ (pX(:,ones(size(pY))) .* pY(ones(size(pX)),:)) ); % faster than
 
 % weighting info
 switch weight_type
-    case 'weightd',
+    case 'weighted',
         i = pXY .* i;
     case 'normalized',
         i = i ./ -log2(pXY);
+    case 'unweighted',
+        
 end
 
 end
