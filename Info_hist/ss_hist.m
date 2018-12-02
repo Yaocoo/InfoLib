@@ -1,12 +1,13 @@
-function [ i ] = ss_hist( X, Y )
+function [ i ] = ss_hist( X, Y, Ntrl )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description: calculate specific surprise vector between discrete
 % variables X and Y.
 %
 % Usage:    i = pmi_hist( X, Y )
 % Input:
-%   X - A vector or matrix. Each column as an independent variable.
-%   Y - A vector or matrix. Each column as an independent variable.
+%   X - A column vector. Values must be >= 1, that means [1 max(X)].
+%   Y - A column vector. Values must be >= 1. that means [1 max(Y)].
+%   Ntrl - Number of trails (samples).
 % Output:
 %   i - specific surprise vector.
 %
@@ -16,12 +17,12 @@ function [ i ] = ss_hist( X, Y )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % preprocessing data
-[Ntrl, ~] = size(X);
-X = bsxfun(@minus,X,min(X))+1;
-Y = bsxfun(@minus,Y,min(Y))+1;
+% [Ntrl, ~] = size(X);
+% X = bsxfun(@minus,X,min(X))+1;
+% Y = bsxfun(@minus,Y,min(Y))+1;
 
 % estimate the probability
-pXY = pEstimater_fh([X Y],Ntrl);
+pXY = pEstimater_dist([X Y],Ntrl);
 pX = sum(pXY,2);
 pY = sum(pXY,1);
 

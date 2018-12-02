@@ -1,6 +1,7 @@
-function [ I ] = mi_fh( pX, pY, pXY )
+function [ I ] = mi_dist( pX, pY, pXY )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description: calculate mutual information between variables X and Y.
+% Description: calculate mutual information between variables X and Y using
+% their probability distribution pX, pY and joint distribution pXY.
 %
 % Usage: I = mi_fh( pX, pY, pXY )
 % Input:
@@ -12,17 +13,14 @@ function [ I ] = mi_fh( pX, pY, pXY )
 %
 % Example:
 %   % estimate the probability
-%   pXY = pEstimater_fh([X Y],Ntrl);
-%   pX = sum(pXY,2);
-%   pY = sum(pXY,1);
-%   % another way for getting pX and pY
-%   % pX = pEstimater_fh(X,Ntrl);
-%   % pY = pEstimater_fh(Y,Ntrl)';
-%
-%   I = mi_lc_fh(pX, pY, pXY);
+%   pXY = pEstimater_hist([X Y],Ntrl);
+%   pX = pEstimater_hist(X,Ntrl);
+%   pY = pEstimater_hist(Y,Ntrl)'; % notice: this is a row vector
+%   % calculate MI
+%   I = mi_dist(pX, pY, pXY);
 %
 % Date: 2018/05/17
-% Revision: 2018/05/17
+% Revision: 2018/12/02
 % Author: Yaocong Duan (yaocong.duan@gmail.com)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -1,13 +1,15 @@
-function [ i, I ] = pmi_hist( X, Y, weight_type )
+function [ i, I ] = pmi_hist( X, Y, Ntrl, weight_type )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description: calculate local mutual information (also called point-wise
 % mutual information) matrix between discrete variable X and Y.
 %
 % Usage:    i = pmi_hist( X, Y )
 %           i = pmi_hist( X, Y, weight_type )
+%           [i,I] = pmi_hist( X, Y, weight_type )
 % Input:
-%   X - A vector or matrix. Each column as an independent variable.
-%   Y - A vector or matrix. Each column as an independent variable.
+%   X - A column vector. Values must be >= 1, that means [1 max(X)].
+%   Y - A column vector. Values must be >= 1. that means [1 max(Y)].
+%   Ntrl - Number of trails (samples).
 %   weight_type - Optional. 'weighted' or 'normalized', otherwise return 
 %   unweighted PMI
 % Output:
@@ -15,21 +17,21 @@ function [ i, I ] = pmi_hist( X, Y, weight_type )
 %   I - Mutual information between variables X and Y.
 %
 % Date: 2018/05/17
-% Revision: 2018/06/14
+% Revision: 2018/12/02
 % Author: Yaocong Duan (yaocong.duan@gmail.com)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % preprocessing data
-if nargin < 3
+if nargin < 4
     weight_type = 'weighted';
 end
 
-[Ntrl, ~] = size(X);
-X = bsxfun(@minus,X,min(X))+1;
-Y = bsxfun(@minus,Y,min(Y))+1;
+% [Ntrl, ~] = size(X);
+% X = bsxfun(@minus,X,min(X))+1;
+% Y = bsxfun(@minus,Y,min(Y))+1;
 
 % estimate the probability
-pXY = pEstimater_fh([X Y],Ntrl);
+pXY = accumarray([X Y],1) ./ Ntrl;
 pX = sum(pXY,2);
 pY = sum(pXY,1);
 

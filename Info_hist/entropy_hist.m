@@ -1,11 +1,12 @@
-function [ E ] = entropy_hist( P )
+function [ E ] = entropy_hist( X, Ntrl )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description: calculate information entropy with a probability 
-% distribution P.
+% Description: calculate information entropy of discrete variable X.
 %
 % Usage: E = entropy_hist( P )
 % Input:
-%   P - Probability distribution.
+%   X - A vector or matrix. Each column as an independent variable. Values
+%   must be >= 1, that means [1 max(X)].
+%   Ntrl - Number of trails (samples).
 % Output:
 %   E - Information theory entropy.
 %
@@ -14,10 +15,12 @@ function [ E ] = entropy_hist( P )
 % Author: Yaocong Duan (yaocong.duan@gmail.com)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% E = -sum(P(P(:)>0).*log2(P(P(:)>0)));
+P = accumarray(X,1) ./ Ntrl;
 
 P = P(P(:)>0);
 E = -sum(P.*log2(P));
+
+% E = -sum(P(P(:)>0).*log2(P(P(:)>0)));
 
 end
 
